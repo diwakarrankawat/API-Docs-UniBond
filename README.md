@@ -1,13 +1,57 @@
-## api/
+## `api/`
 
 -   Authentication Required*
 -   Wallets owned by user, last 5 transactions
 -   Allowed methods - GET.
-    
+### Responses
+*Err-Unauthorised Request*
+```JSON
+{
+    "message": "Failed - Not Authenticated",
+    "errors": [
+        "Log In first to access application"
+    ]
+}
+```
 
-  
+*Success*
+```JSON
+{
+    "message": "Success",
+    "data": {
+        "authenticated": true,
+        "user": {
+            "username": "temp",
+            "first_name": "Temp",
+            "last_name": "User"
+        },
+        "wallets": [
+            {
+                "id": 2,
+                "address": "0xb794f5ea0ba39494ce839613fffba82039480283",
+                "nick_name": "Second User wallet",
+                "balance": 2988.23
+            }
+        ],
+        "transactions": [
+            {
+                "from_wallet": {
+                    "nick_name": "First Wallet",
+                    "address": "0xb794f5ea0ba39494ce839613fffba74279579268"
+                },
+                "to_wallet": "0xb794f5ea0ba39494ce839613fffba82039480283",
+                "amount": 5.0,
+                "description": "Payment of 5.0",
+                "made_on": "2022-04-02T09:56:05.212219Z",
+                "type": "Credited"
+            }
+        ]
+    }
+}
+```
 
-## api/user-details/
+
+## `api/user-details/`
 
 -   Authentication Required*
 -   GET - username, name, date joined
@@ -24,7 +68,7 @@
 ```
   
 
-## api/wallet/
+## `api/wallet/`
 
 -   Authentication Required*
 -   GET - List all wallets owned by the user.
